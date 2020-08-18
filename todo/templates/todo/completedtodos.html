@@ -1,0 +1,53 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+{% block content %}
+
+ <!-- <div class="js-fullheight"> -->
+    <div class="hero-wrap js-fullheight">
+      <div class="overlay"></div>
+      <div id="particles-js"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6  text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Completed</strong> To Do's</h1>
+            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+        <section class="ftco-section contact-section ftco-degree-bg d-flex" >
+      <div class="container bg-light ">
+
+                        <ul class="comment-list">
+                             {% for todo in todos %}
+                                   <li class="comment " align="center" >
+                                     <div class="vcard bio">
+                                        <img src="{% static 'todo/images/completed.png' %}" alt="Image placeholder">
+                                     </div>
+                                     <div class="comment-body ">
+                                      <div class="h3">  {% if todo.important %} <b style="color:red">{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}</div>
+                                          <div class="meta"> {{ todo.datecompleted|date:'M j Y H:i' }}</div>
+                                         <p> {% if todo.memo %}  {{ todo.memo }}{% endif %}</p>
+                                         <p><a href="{% url 'viewtodo' todo.id %}" class="reply">Edit</a></p>
+                                     </div>
+                                   </li>
+
+
+                         {% endfor %}
+                               </ul>
+
+                   </div>
+                </section>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

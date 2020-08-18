@@ -1,0 +1,73 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="hero-wrap js-fullheight">
+      <div class="overlay"></div>
+      <div id="particles-js"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6 text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Sign Up</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Sign Up</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section ftco-degree-bg">
+      <div class="container bg-light">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h2">Sign Up</h2>
+          </div>
+          <div class="w-100"></div>
+               {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 pr-md-5">
+            <form method="POST">
+               {% csrf_token %}
+
+                  <div class="form-group">
+                        <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp">
+                    <small id="usernameHelp" class="form-text text-muted">Your username must be unique. We'll let you know if someone has taken it already.</small>
+              </div>
+
+              <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" name="password1" class="form-control" id="password1">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" name="password2" class="form-control" id="password2">
+                </div>
+               <button type="submit" class="btn btn-primary py-3 px-5">SignUp</button>
+             </form>
+
+               <hr>
+            <div class="text-center">
+                Already have an account? <a href="{% url 'loginuser' %}">Log In here</a>
+            </div>
+
+
+          </div>
+
+          <div class="col-md-6 pr-md-5" >
+              <img src="{% static 'todo/images/to-do-list-apps.png' %}" style="height:100% ; width:100%">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+{% endblock %}
